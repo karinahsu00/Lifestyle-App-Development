@@ -1,0 +1,196 @@
+import React from 'react'; //引入房子基本框架，最重要的部分
+import {
+  SafeAreaView, // 引入 SafeAreaView 以確保內容不會被系統 UI 遮擋
+  View, // 引入 View 以建立容器
+  Text, 
+  StyleSheet, // 定義樣式
+  Image, 
+  TouchableOpacity, // 可點擊的按鈕
+  Alert, // 顯示提示對話框
+  Platform, // 檢測平台（iOS 或 Android）
+} from 'react-native'; // 引入 React Native 的核心組件
+import i18n from 'i18next'; // 多國語言翻譯工具
+import { initReactI18next, useTranslation } from 'react-i18next'; // 引入 react-i18next 以便在 React 中使用 i18next
+// import * as RNLocalize from 'react-native-localize'; // <-- 已修正：完全移除此行
+
+// --- i18next 設定區 (翻譯大腦)---
+const translations = {
+  en: {
+    translation: { // i18next 需要一個名為 'translation' 的 字典
+      title: 'Money Manager',
+      subtitle: 'Easily manage your budget and expenses',
+      start: 'Get Started',
+      welcomeTitle: 'Welcome to Money Manager',
+      welcomeMsg: 'Let\'s start managing your budget and expenses',
+      copyright: '© 2025 Money Manager',
+      switchLang: '繁體中文',
+    },
+  },
+  zh: {
+    translation: {
+      title: 'Money Manager',
+      subtitle: '輕鬆管理你的預算與開支',
+      start: '立即開始',
+      welcomeTitle: '歡迎使用 Money Manager',
+      welcomeMsg: '讓我們開始管理你的預算與開支吧',
+      copyright: '© 2025 Money Manager',
+      switchLang: 'English',
+    },
+  },
+};
+
+// 由於 RNLocalize 不穩定，我們暫時不自動偵測語言，直接預設為英文
+// 這樣可以確保 App 100% 正常啟動
+i18n
+  .use(initReactI18next) // 將 i18n 實例傳遞給 react-i18next
+  .init({
+    compatibilityJSON: 'v3', // 確保與 React Native 相容
+    resources: translations, // 告訴系統字典在這裡
+    lng: 'en', // 直接預設為英文
+    fallbackLng: 'en', // 如果沒有該語言，預設為英文
+    interpolation: {
+      escapeValue: false, // React 已經會處理 XSS，所以設為 false
+    },
+  });
+
+// --- 元件區 ---
+const COLORS = {
+  primary: '#1E90FF',
+  background: '#F0F4F8',
+  text: '#333333',
+  textSecondary: '#666666',
+  white: '#FFFFFF',
+};
+
+interface CustomButtonProps { // 定義按鈕的屬性
+  title: string; // 按鈕的標題
+  onPress: () => void; // 按鈕被點擊時要做什麼
+}
+
+const CustomButton: React.FC<CustomButtonProps> = ({ title, onPress }) => (
+  <TouchableOpacity style={buttonStyles.button} onPress={onPress} activeOpacity={0.8}>
+    <Text style={buttonStyles.buttonText}>{title}</Text>
+  </TouchableOpacity> 
+);
+
+export default function App() {
+  // 使用 useTranslation hook 來取得翻譯函式 t 和 i18n 實例
+  const { t, i18n } = useTranslation();
+
+  const handlePress = () => {  // 當按鈕被按下時會執行裡面的程式碼
+    // 使用 t() 來取得翻譯文字
+    Alert.alert(t('welcomeTitle'), t('welcomeMsg'));
+  };
+
+  const toggleLanguage = () => { // 切換語言的函式
+    const newLang = i18n.language === 'zh' ? 'en' : 'zh';
+    i18n.changeLanguage(newLang);
+  };
+
+// --- 主畫面 ---
+  return (
+    <SafeAreaView style={styles.container}>
+      <TouchableOpacity style={styles.langSwitch} onPress={toggleLanguage}>
+        <Text style={styles.langSwitchText}>{t('switchLang')}</Text>
+      </TouchableOpacity>
+      
+      <View style={styles.content}>
+        <Image
+          source={{ uri: 'https://img.icons8.com/ios-filled/100/1E90FF/money-bag.png' }}
+          style={styles.logo}
+        />
+        <Text style={styles.title}>{t('title')}</Text>
+        <Text style={styles.subtitle}>{t('subtitle')}</Text>
+        <CustomButton title={t('start')} onPress={handlePress} />
+      </View>
+      
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>{t('copyright')}</Text>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+// --- 樣式表 ---
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.background, // 背景顏色
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+  logo: {
+    width: 80,
+    height: 80,
+    marginBottom: 24,
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: '700',
+    marginBottom: 12,
+    color: COLORS.text,
+  },
+  subtitle: {
+    fontSize: 18,
+    marginBottom: 40,
+    color: COLORS.textSecondary,
+    textAlign: 'center',
+    paddingHorizontal: 20,
+  },
+  footer: {
+    padding: 24,
+    alignItems: 'center',
+  },
+  footerText: {
+    color: '#AAB8C2',
+    fontSize: 12,
+  },
+  langSwitch: {
+    position: 'absolute',
+    top: Platform.OS === 'ios' ? 60 : 40,
+    right: 24,
+    zIndex: 1,
+    padding: 8,
+  },
+  langSwitchText: {
+    color: COLORS.primary,
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});
+
+const buttonStyles = StyleSheet.create({
+  button: { // 按鈕的樣式
+    backgroundColor: COLORS.primary, // 背景顏色
+    paddingVertical: 16, // 垂直內邊距
+    paddingHorizontal: 48, // 水平內邊距
+    borderRadius: 30, // 圓角
+    alignItems: 'center', // 水平置中
+    justifyContent: 'center', // 垂直置中
+    elevation: 3, // Android 的陰影效果
+    shadowColor: COLORS.primary, // iOS 的陰影顏色
+    shadowOpacity: 0.3, // iOS 的陰影透明度
+    shadowRadius: 10, // iOS 的陰影半徑
+    shadowOffset: { width: 0, height: 5 }, // iOS 的陰影偏移
+    width: '80%', // 寬度
+    maxWidth: 300, // 最大寬度
+  },
+  buttonText: {
+    color: COLORS.white, // 按鈕文字顏色
+    fontSize: 18, // 文字大小
+    fontWeight: 'bold', // 文字粗細
+    textAlign: 'center', // 文字置中
+    textTransform: 'uppercase', // 文字大寫
+    letterSpacing: 1, // 文字間距
+    lineHeight: 24, // 行高
+    fontFamily: Platform.OS === 'ios' ? 'Arial' : 'Roboto', // 字體
+    // 注意：在 Android 上，Roboto 是預設字體，所以不需要特別指定
+    // 但在 iOS 上，Arial 是預設字體，所以需要指定
+    // 這樣可以確保在不同平台上有一致的字體顯示效果
+    textDecorationLine: 'none', // 文字裝飾線
+  },
+});
