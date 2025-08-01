@@ -13,7 +13,7 @@ A simple app to track your daily expenses and categorize them.
 - Authentication: Google Login
 
 ## Screenshots
-(comming soon...)
+(coming soon...)
 
 ## Future Plans
 - Support multi-user shared budgets
