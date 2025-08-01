@@ -1,7 +1,6 @@
-1. VS Code - Open `MyApp` file.
+1. VS Code - Open `TestProject` file.
 
-2. Turn on `Metro` with the first Terminal - cd ~/my-app/MyApp
-                                           - npx react-native start
+2. Turn on `Metro` with Terminal (Control + ~) - npx react-native start
 
-3. Open the App with another Terminal - cd ~/my-app/MyApp
-                                      - npx react-native run-ios
+3. Open the App with another Terminal - npx react-native run-ios
+
