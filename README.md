@@ -1,6 +1,104 @@
-# Life Tools - Split & Sync
+# CoLedge - Money Manage & Split
+
 
 <div align="center">
+  
+### *Collaborate, Track, Settle — Smarter Together.*
+  
+**The shared expense and splitting app designed for couples, family, and friends.** <br>
+**Say goodbye to basic budgeting, and hello to simple, collaborative financial management.**
+
+</div>
+
+<p align="center">
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  <a href="https://reactnative.dev/" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/framework-React%20Native-informational.svg" />
+  </a>
+   <a href="https://firebase.google.com/" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/backend-Firebase-orange.svg" />
+  </a>
+</p>
+
+---
+
+## 🚀 Core Concept
+
+“I’ll cover this one, you get the next.” “How do we split rent and utilities?” “What’s the fairest way to divide up our trip costs?” — CoLedeg makes all of this effortless.
+
+`CoLedge - Money Manage & Split` was born to solve these common financial collaboration challenges of modern life.
+
+## ✨ Features
+
+* **👤 Personal Ledger**
+    * Manage all your personal expenses. Keep your private and shared ledgers separate.
+
+* **👥 Seamless Shared Ledgers**
+    * **One-tap invites:** Easily invite your partner or roommates to a shared ledger.
+    * **Transparent spending:** All expenses are synced in real-time for full financial transparency.
+    * **Permission controls:** Set who can add or edit entries in the ledger.
+
+* **🧮 Advanced Splitting Engine**
+    * **More than just 50/50!** Supports flexible splitting methods—by percentage, by share, or custom amounts.
+    * Automatically calculates who owes what and suggests the easiest way to settle up.
+
+* **📅 Recurring Bills**
+    * Set up recurring expenses like rent, utilities, or subscriptions in just a few taps.
+    * The app automatically logs and splits them on schedule, saving you time and effort.
+
+* **📊 Clear Visual Charts**
+    * See exactly where your money is going with intuitive and easy-to-understand charts.
+
+* **📸 Photo Attachments & Notes**
+    * Attach a receipt photo or text note to each expense for easy reference later.
+
+## 🎯 Target Audience
+
+* **Couples & Partners:** Manage household finances together and build a stronger, more transparent relationship.
+* **Students & Roommates:** Effortlessly handle rent, utilities, and groceries to avoid money-related conflicts.
+* **Travel Groups:** Create a dedicated ledger for each trip and settle up with a single tap at the end.
+
+
+## 🛠️ Tech Stack
+
+* **Frontend Framework:** `React Native`
+* **Backend as a Service (BaaS):** `Firebase`
+    * **Database:** `Firestore`
+    * **Authentication:** `Firebase Authentication`
+    * **Storage:** `Cloud Storage for Firebase`
+
+
+## 🔮 Future Plans
+
+We have a long-term vision for `Split & Sync` and plan to add more powerful features in the future:
+
+-   [ ] **🗣️ Voice Logging:** Log expenses using just your voice—for the ultimate in convenience.
+-   [ ] **📈 Advanced Analytics:** Provide deeper insights into personal and shared spending habits.
+-   [ ] **💸 Multi-Currency Support:** Make splitting expenses on international trips even easier.
+-   [ ] **📄 Report Exporting:** Support exporting ledgers to `CSV` or `PDF` files.
+-   [ ] **🌐 Web Application:** Manage your ledgers from a desktop browser.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
+
+<br />
+
+<div align="center">
+  Made by KarinaHsu
+</div>
+
+
+
+
+# CoLedge - Money Manage & Split
+
+<div align="center">
+
+### *小帳本，大朋友，分帳從此變簡單*
 
 **專為情侶、家人與朋友設計的共享記帳與分帳 App。** **告別傳統記帳的孤單，迎接共同理財的簡單。**
 
@@ -23,7 +121,7 @@
 
 「這餐我先付，下次換你。」、「房租、水電費該怎麼分？」、「一起去旅行，帳怎麼算最清楚？」—— 我們將這一切變得簡單。
 
-`Split & Sync` 的誕生就是為了解決這些現代生活中常見的財務協作難題。
+`CoLedge - Money Manage & Split` 的誕生就是為了解決這些現代生活中常見的財務協作難題。
 ### **好的工具能讓金錢話題變得簡單透明，讓關係不再因算帳而尷尬。**
 
 
